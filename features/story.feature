@@ -15,6 +15,8 @@ Feature: Story
     | AAB        | The monster says it wants to kill you, wyd?               | Fight the monster     | Run away            |          |
     | AAA        | The monster explodes, the whole room is now messy, wyd?   | Clean                 | Dont clean          |          |
     | AAC        | The monster runs after you. Go right or left?             | Right                 | left                |          |
+    | AACA       | The monster got stuck and you got away, SUCCESS           |                       |                     |          |
+  Scenario: User reads first part of a story
   Scenario: User reads first part of a story
     When I visit the "Starship" story page
     Then I should see "Starship"
@@ -48,3 +50,17 @@ Feature: Story
     Then I should be on the "AA" chapter
     And I click "Run"
     Then I should be on the "AAC" chapter
+
+  Scenario: User finish story
+    When I visit the "Starship" story page
+    And I click "Start Story"
+    And I click "Shoot it with a laser"
+    Then I should be on the "AA" chapter
+    And I click "Run"
+    And I should be on the "AAC" chapter
+    And I click "Right"
+    And I should be on the "AACA" chapter
+    And I should see "The monster got stuck and you got away, SUCCESS"
+    And I should see "You finished the story, thanks for reading"
+    And I click "Go back to homepage"
+    And I should be on the landing page
