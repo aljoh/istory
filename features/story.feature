@@ -24,6 +24,11 @@ Feature: Story
     And I click "Take me to the story"
     Then I visit the "Starship" story page
 
+  Scenario: User can't read story if not logged in
+    Given I visit the landing page
+    And I click "Take me to the story"
+    Then I should see "You need to be logged in in order to read a story"
+
   Scenario: User reads first part of a story
     When I visit the "Starship" story page
     Then I should see "Starship"
